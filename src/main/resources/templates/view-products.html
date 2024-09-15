@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View All Products</title>
+</head>
+<body>
+<h1>Products List</h1>
+<p th:if="${successMsg}" th:text="${successMsg}" style="color: green;"></p><br><br>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.prod_name}"></td>
+            <td th:text="${product.price}"></td>
+            <td>
+                <a th:href="@{/update-product/{id}(id=${product.id})}">Update</a>
+
+                <form th:action="@{/delete-product/{id}(id=${product.id})}" method="post" onsubmit="return confirm('Are you sure want to delete this product?');">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+
+<!-- Thymeleaf loop to display all products -->
+<!--<ul>-->
+<!--    <li th:each="product : ${products}">-->
+<!--        ID: <span th:text="${product.id}"></span>,-->
+<!--        Name: <span th:text="${product.prod_name}"></span>,-->
+<!--        Price: <span th:text="${product.price}"></span>-->
+<!--    </li>-->
+<!--</ul>-->
+
+<a th:href="@{/}">Back to Home</a>
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,12 +9,11 @@
 <h1>Product Management</h1>
 <p>Welcome! Use the links below to manage products.</p>
 
-<!-- Links to CRUD operations -->
+<!-- Links to Thymeleaf views -->
 <ul>
-    <li><a href="create-product.html">Create Product</a></li>
-    <li><a href="view-products.html">View All Products</a></li>
-    <li><a href="update-product.html">Update Product</a></li>
-    <li><a href="delete-product.html">Delete Product</a></li>
+    <li><a th:href="@{/create-product}">Create Product</a></li><br><br>
+    <li><a th:href="@{/view-products}">View All Products</a></li>
+
 </ul>
 </body>
 </html>
